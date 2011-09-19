@@ -2,7 +2,7 @@ Python-Vlille
 =============
 
 Ce module permet d'accéder aux informations du système de vélos en
-libre service (VLS) de Lille : les VLille ( http://vlille.fr )
+libre service (VLS) de Lille : le VLille ( http://vlille.fr )
 
 Les informations suivantes sont accessibles pour chaque station :
   * Nom
