@@ -25,9 +25,11 @@ Exemple de code
 ---------------
 
  v = Vlille()
+
  v.load_stations()
 
  print v.stations[0]
+
  <Station: Lille Metropole - LMCU RUE DU BALLON>
 
 Licence
