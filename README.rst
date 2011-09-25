@@ -21,6 +21,7 @@ plus pythonique.
 Il n'y a plus qu'à montrer que l'on peut intelligemment exploiter les
 données ouvertes :-)
 
+
 Exemple de code
 ---------------
 
@@ -28,14 +29,20 @@ Exemple de code
 
  v.load_stations()
 
- print v.stations[0]
+ station = v.stations[0]
 
  <Station: Lille Metropole - LMCU RUE DU BALLON>
+
+ station.to_json()
+
+ {"status": "0", "id": 1, "free_attachs": "30", "bikes": "6", "address": "LMCU RUE DU BALLON ", "payment": "AVEC_TPE"}
+
 
 Licence
 -------
 
 GNU GPL v3 (voir le fichier COPYING)
+
 
 Auteurs/Contributeurs
 ---------------------

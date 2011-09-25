@@ -13,7 +13,7 @@ class Vlille(object):
     def load_stations(self):
         self.stations = []
 
-        handler = urllib.urlopen("http://vlille.fr/stations/xml-stations.aspx")
+        handler = urllib.urlopen("http://www.vlille.fr/stations/xml-stations.aspx")
         stations_xml = handler.read()
 
         # replace encoding, since it's wrong !
