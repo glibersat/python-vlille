@@ -9,7 +9,8 @@ Les informations suivantes sont accessibles pour chaque station :
   * Adresse
   * Position géographique (lat, long)
   * Nombre de vélos disponibles
-  * Nombre d'attaches
+  * Nombre d'attaches disponibles
+  * Nombre d'attaches au total
   * État de la station (en maintenance, ...)
   * Les modes de paiement acceptés
   * La date de dernière mise à jour
@@ -35,7 +36,7 @@ Exemple de code
 
  station.to_json()
 
- {"status": "0", "id": 1, "free_attachs": "30", "bikes": "6", "address": "LMCU RUE DU BALLON ", "payment": "AVEC_TPE"}
+ {"status": "0", "id": 1, "free_attachs": 30, "bikes": 6, "attachs": 36, "address": "LMCU RUE DU BALLON ", "payment": "AVEC_TPE"}
 
 
 Licence
@@ -47,8 +48,8 @@ GNU GPL v3 (voir le fichier COPYING)
 Auteurs/Contributeurs
 ---------------------
 
-Guillaume Libersat <glibersat@sigill.org>
-
+ * Guillaume Libersat <glibersat@sigill.org>
+ * Florian Le Goff <florian@9h37.fr>
 
 
 

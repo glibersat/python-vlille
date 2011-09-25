@@ -1,23 +1,29 @@
 import datetime
+import json
 import urllib2 as urllib
 import re
 import xml.etree.ElementTree
-import json
 
 class Station(object):
     """
     A single station where we get and put bikes
     """
-    def __init__(self, id, name, latitude, longitude):
+    def __init__(self, id, name="Unknown Station", latitude=None, longitude=None):
         self.id = int(id)
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
 
         self.address = ""
+
+        # So far, I've seen state 0, 1 and 2.
+        # 0 = Works
+        # 1 and 2 means it doesn't, or partially, but I don't know yet
+        # exactly.
         self.status = None
+
         self.bikes = 0
-        self.attachs = 0
+        self.free_attachs = 0
         self.payment = None
         self.last_update = None
 
@@ -33,8 +39,8 @@ class Station(object):
 
         self.address = element.find('adress').text
         self.status = element.find('status').text
-        self.bikes = element.find('bikes').text
-        self.free_attachs = element.find('attachs').text
+        self.bikes = int(element.find('bikes').text)
+        self.free_attachs = int(element.find('attachs').text)
         self.payment = element.find('paiement').text
         
         self.last_update = element.find('lastupd').text
@@ -44,13 +50,18 @@ class Station(object):
         return "Station: %s - %s" % (self.name, self.address)
 
     def to_dict(self):
-        return {
-            'id':           self.id,
-            'address':      self.address,
-            'status':       self.status,
-            'bikes':        self.bikes,
-            'free_attachs': self.free_attachs,
-            'payment':      self.payment }
+        return {'id': self.id,
+                'address': self.address,
+                'status': self.status,
+                'bikes': self.bikes,
+                'free_attachs': self.free_attachs,
+                'attachs': self.attachs,
+                'payment': self.payment
+                }
 
     def to_json(self):
         return json.dumps(self.to_dict())
+
+    @property
+    def attachs(self):
+        return self.free_attachs + self.bikes
