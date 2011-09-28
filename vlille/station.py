@@ -1,8 +1,12 @@
 import datetime
-import json
 import urllib2 as urllib
 import re
 import xml.etree.ElementTree
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
 
 class Station(object):
     """
@@ -51,6 +55,9 @@ class Station(object):
 
     def to_dict(self):
         return {'id': self.id,
+                'name': self.name,
+                'latitude': self.latitude,
+                'longitude': self.longitude,
                 'address': self.address,
                 'status': self.status,
                 'bikes': self.bikes,
