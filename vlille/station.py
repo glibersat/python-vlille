@@ -47,8 +47,8 @@ class Station(object):
         self.free_attachs = int(element.find('attachs').text)
         self.payment = element.find('paiement').text
         
-        self.last_update = element.find('lastupd').text
-        self.last_update = datetime.datetime.now() - datetime.timedelta(seconds=int(re.match(r'\d+', self.last_update).group(0)))
+        last_update = element.find('lastupd').text
+        self.last_update = datetime.datetime.now() - datetime.timedelta(seconds=int(re.match(r'\d+', last_update).group(0)))
         
     def __repr__(self):
         return "Station: %s - %s" % (self.name, self.address)
@@ -63,7 +63,8 @@ class Station(object):
                 'bikes': self.bikes,
                 'free_attachs': self.free_attachs,
                 'attachs': self.attachs,
-                'payment': self.payment
+                'payment': self.payment,
+		'last_update': self.last_update,
                 }
 
     def to_json(self):
